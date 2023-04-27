@@ -23,10 +23,6 @@ public class User:IdentityUser
     public string Address { get; set; }
 
     [Required]
-    [Display(Name = "Teléfono")]
-    public string Phone { get; set; }
-
-    [Required]
     [Display(Name = "Grupo sanguíneo")]
     public BloodGroup BloodGroup { get; set; }
 
