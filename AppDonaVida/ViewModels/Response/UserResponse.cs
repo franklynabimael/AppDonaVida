@@ -1,5 +1,4 @@
-﻿using Dog_Market_2._0.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
 namespace AppDonaVida.ViewModels.Response;
