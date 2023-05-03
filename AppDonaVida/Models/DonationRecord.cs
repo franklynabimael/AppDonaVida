@@ -10,5 +10,4 @@ public class DonationRecord
     public CenterDonor CenterDonor { get; set; }
     public string IdUser { get; set; }
     public User UserRecord { get; set; }
-    public object UserId { get; internal set; }
 }

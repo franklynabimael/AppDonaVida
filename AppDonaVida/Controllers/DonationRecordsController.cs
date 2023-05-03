@@ -43,32 +43,24 @@ public class DonationRecordsController : ControllerBase
         return Ok(donationRecordResponse);
     }
 
-    [HttpGet("{idUser}")]
+
+    // Crear un get, y que este endpoint tenga un Authorize.
+
+    [HttpGet("recordUser")]
     [Authorize]
+    public IActionResult getRecordUser() {
 
-    public IActionResult getRecordUser(Guid idUser) {
-
-    string? currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-            if (currentUserId == null)
+        string? currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (currentUserId == null)
         {
             return StatusCode((int)HttpStatusCode.Unauthorized);
         }
-
-        var record =  _context.DonationRecords.Include(x => x.IdUser).FirstOrDefault(x => x.IdUser == currentUserId) ?? throw new ArgumentNullException(nameof(currentUserId), "No se encontro");
-
-        if (record == null)
+        IEnumerable<DonationRecord> records = _context.DonationRecords.Where(d => d.IdUser == currentUserId).ToList();
+        if (!records.Any()) 
         {
-          return record = DonationRecordResponse
+            return Ok();
         }
-
-
-
-
-        return Ok();
-  
+        IEnumerable<DonationRecordResponse> recordsResponse = records.Adapt<IEnumerable<DonationRecordResponse>>();
+        return Ok(recordsResponse);
     }
-
-
-
 }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AppDonaVida.Models;
 
-public class User:IdentityUser
+public class User : IdentityUser
 {
     [Required]
     [Display(Name = "Nombre")]
@@ -27,7 +27,6 @@ public class User:IdentityUser
     public BloodGroup BloodGroup { get; set; }
 
     public ICollection<Quote> Quotes { get; set; }
-    public ICollection<DonationRecord>DonationRecords { get; set; }
-
+    public ICollection<DonationRecord> DonationRecords { get; set; }
 
 }
