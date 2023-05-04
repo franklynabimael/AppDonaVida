@@ -9,8 +9,11 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using System.Text.Json.Serialization;
 
+[ExcludeFromCodeCoverage]
 public static class Program
 {
     private const string SqlConnectionString = "SqlServerConnection";
@@ -28,10 +31,8 @@ public static class Program
         builder.Services.AddDbContext<ADVContext>(options =>
                     options.UseSqlServer(builder.Configuration.GetConnectionString(SqlConnectionString)));
         builder.Services.AddControllers();
-
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-
         builder.Services.AddScoped<JwtHandler>();
 
         var app = builder.Build();
@@ -120,8 +121,7 @@ public static class Program
                 ValidateIssuerSigningKey = true,
                 ValidIssuer = jwtSettings["validIssuer"],
                 ValidAudience = jwtSettings["validAudience"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
-                    .GetBytes(jwtSettings.GetSection("securityKey").Value))
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTSettings:securityKey"])),
             };
         });
     }

@@ -1,3 +1,5 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,20 +15,25 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddDonationRecordComponent } from './components/add-donation-record/add-donation-record.component';
 import { AddQuoteComponent } from './components/add-quote/add-quote.component';
+import { BodySidebarComponent } from './components/body-sidebar/body-sidebar.component';
 import { CentersDonationComponent } from './components/centers-donation/centers-donation.component';
 import { DonationRecordDetailComponent } from './components/donation-record-detail/donation-record-detail.component';
 import { DonationRecordsComponent } from './components/donation-records/donation-records.component';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavBarComponent } from './components/navbar/nav-bar.component';
 import { QuotesComponent } from './components/quotes/quotes.component';
 import { RegisterComponent } from './components/register/register.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { UserService } from './services/user.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -38,18 +45,22 @@ export function tokenGetter() {
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarComponent,
-    SidebarComponent,
+    NavBarComponent,
     AddQuoteComponent,
     QuotesComponent,
-    CentersDonationComponent,
+    CentersDonationComponent, 
     DonationRecordsComponent,
     DonationRecordDetailComponent,
     AddDonationRecordComponent,
+    BodySidebarComponent,
+    ForbiddenComponent,
+    SideBarComponent,
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -63,6 +74,7 @@ export function tokenGetter() {
     MatSelectModule,
     MatSliderModule,
     MatDialogModule,
+    HttpClientModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -70,8 +82,9 @@ export function tokenGetter() {
         disallowedRoutes: [],
       },
     }),
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

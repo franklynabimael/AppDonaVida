@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppDonaVida.Migrations
 {
     [DbContext(typeof(ADVContext))]
-    [Migration("20230427005557_initial")]
-    partial class initial
+    [Migration("20230504004827_otro2")]
+    partial class otro2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,6 +29,7 @@ namespace AppDonaVida.Migrations
             modelBuilder.Entity("AppDonaVida.Models.CenterDonor", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Addres")
@@ -50,6 +51,16 @@ namespace AppDonaVida.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CenterDonors", "ADVDB");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "cruzroja",
+                            Addres = "Sancristobal",
+                            Name = "CruzRoja",
+                            Phone = "8497505944",
+                            Province = "Sancristobal"
+                        });
                 });
 
             modelBuilder.Entity("AppDonaVida.Models.DonationRecord", b =>
@@ -81,6 +92,16 @@ namespace AppDonaVida.Migrations
                     b.HasIndex("IdUser");
 
                     b.ToTable("DonationRecords", "ADVDB");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Date = new DateTime(2023, 5, 3, 20, 48, 26, 584, DateTimeKind.Local).AddTicks(270),
+                            IdCenterDonation = "cruzroja",
+                            IdUser = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
+                            Quantity = 3f
+                        });
                 });
 
             modelBuilder.Entity("AppDonaVida.Models.Quote", b =>
@@ -99,6 +120,9 @@ namespace AppDonaVida.Migrations
                     b.Property<string>("IdUser")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsAproved")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -163,10 +187,6 @@ namespace AppDonaVida.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -194,6 +214,30 @@ namespace AppDonaVida.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", "ADVDB");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
+                            AccessFailedCount = 0,
+                            Address = "tuhna",
+                            BirthDate = new DateTime(2023, 5, 4, 0, 48, 26, 586, DateTimeKind.Utc).AddTicks(8859),
+                            BloodGroup = 0,
+                            ConcurrencyStamp = "e3cb751c-4fe7-432a-8a04-db46b5eef850",
+                            Email = "user@example.com",
+                            EmailConfirmed = true,
+                            LastName = "Hernandez",
+                            LockoutEnabled = false,
+                            Name = "Franklyn",
+                            NormalizedEmail = "USER@EXAMPLE.COM",
+                            NormalizedUserName = "FRANKLYN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPPtUUOZMPHYdTHbEmthVhbNL+Bh7evpZxS6gvgAESD7TB7jhAGS+HXheh5NIsB8vw==",
+                            PhoneNumber = "8296872544",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "2250c404-3732-411a-a878-2c3787af4758",
+                            TwoFactorEnabled = false,
+                            UserName = "franklyn"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -221,6 +265,20 @@ namespace AppDonaVida.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", "ADVDB");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "2301D884-221A-4E7D-B509-0113DCC043E1",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "7D9B7113-A8F8-4035-99A7-A20DD400F6A3",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -308,6 +366,13 @@ namespace AppDonaVida.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", "ADVDB");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
+                            RoleId = "2301D884-221A-4E7D-B509-0113DCC043E1"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

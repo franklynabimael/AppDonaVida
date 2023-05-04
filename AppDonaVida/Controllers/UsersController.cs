@@ -56,7 +56,7 @@ public class UsersController : ControllerBase
         var signingCredentials = _jwtHandler.GetSigningCredentials();
         var claims = await _jwtHandler.GetClaims(user);
         var tokenOptions = _jwtHandler.GenerateTokenOptions(signingCredentials, claims);
-        var token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+        string token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
         return Ok(new LogingResponse { IsAuthSuccessful = true, Token = token });
     }
 }

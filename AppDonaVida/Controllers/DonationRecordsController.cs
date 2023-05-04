@@ -29,8 +29,8 @@ public class DonationRecordsController : ControllerBase
         return Ok(donationRecordResponses);
     }
 
-    [HttpGet("{donationRecordId}")]
-    public IActionResult IdDonationRecord( string donationRecordId)
+    [HttpGet("{donationRecordId:int}")]
+    public IActionResult IdDonationRecord( int donationRecordId)
     {
         var donationRecord= _context.DonationRecords.Find(donationRecordId);
         if (donationRecord == null)

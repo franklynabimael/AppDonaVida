@@ -5,6 +5,8 @@ using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Security.Claims;
 
 namespace AppDonaVida.Controllers;
 
@@ -29,20 +31,30 @@ public class QuotesController : ControllerBase
         return Ok(quotesResponse);
     }
 
-    [HttpGet("{quoteId:string}")]
+    [HttpGet("{quoteId}")]
     [Authorize]
     public IActionResult AcceptQuote(string quoteId)
     {
         Quote quote = _context.Quotes.FirstOrDefault(x => x.Id == quoteId) ?? throw new Exception("No Se Encontro la Cita");
         quote.IsAproved = true;
+        _context.Quotes.Update(quote);
+        _context.SaveChanges();
         return Ok();
     }
 
     [HttpPost]
     [Authorize]
-    public IActionResult CreateQuote(QuoteDTO quoteDTO) { 
+    public IActionResult CreateQuote(QuoteDTO quoteDTO) {
+        string? currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (currentUserId == null)
+        {
+            return StatusCode((int)HttpStatusCode.Unauthorized);
+        }
+
         // En una nueva variable de tipo "el models correspondiente", adaptar el quoteDTO a al tipo de dato "el modelo correspondiente".
         Quote quote = quoteDTO.Adapt<Quote>();
+
+        quote.IdUser = currentUserId;
         // Seleccionar la tabla, seleccionar Add, y a;adir esta variable que adaptamos.
         _context.Quotes.Add(quote);
         // El context, y la operacion de guardar cambios.

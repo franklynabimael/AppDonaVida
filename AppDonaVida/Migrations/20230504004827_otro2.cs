@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace AppDonaVida.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class otro2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -39,7 +41,6 @@ namespace AppDonaVida.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BloodGroup = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -233,7 +234,8 @@ namespace AppDonaVida.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IdUser = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    IdCenter = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    IdCenter = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsAproved = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -253,6 +255,40 @@ namespace AppDonaVida.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                schema: "ADVDB",
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "2301D884-221A-4E7D-B509-0113DCC043E1", null, "Admin", "ADMIN" },
+                    { "7D9B7113-A8F8-4035-99A7-A20DD400F6A3", null, "User", "USER" }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "ADVDB",
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "Address", "BirthDate", "BloodGroup", "ConcurrencyStamp", "Email", "EmailConfirmed", "LastName", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "B22698B8-42A2-4115-9631-1C2D1E2AC5F7", 0, "tuhna", new DateTime(2023, 5, 4, 0, 48, 26, 586, DateTimeKind.Utc).AddTicks(8859), 0, "e3cb751c-4fe7-432a-8a04-db46b5eef850", "user@example.com", true, "Hernandez", false, null, "Franklyn", "USER@EXAMPLE.COM", "FRANKLYN", "AQAAAAIAAYagAAAAEPPtUUOZMPHYdTHbEmthVhbNL+Bh7evpZxS6gvgAESD7TB7jhAGS+HXheh5NIsB8vw==", "8296872544", true, "2250c404-3732-411a-a878-2c3787af4758", false, "franklyn" });
+
+            migrationBuilder.InsertData(
+                schema: "ADVDB",
+                table: "CenterDonors",
+                columns: new[] { "Id", "Addres", "Name", "Phone", "Province" },
+                values: new object[] { "cruzroja", "Sancristobal", "CruzRoja", "8497505944", "Sancristobal" });
+
+            migrationBuilder.InsertData(
+                schema: "ADVDB",
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "2301D884-221A-4E7D-B509-0113DCC043E1", "B22698B8-42A2-4115-9631-1C2D1E2AC5F7" });
+
+            migrationBuilder.InsertData(
+                schema: "ADVDB",
+                table: "DonationRecords",
+                columns: new[] { "Id", "Date", "IdCenterDonation", "IdUser", "Quantity" },
+                values: new object[] { 1, new DateTime(2023, 5, 3, 20, 48, 26, 584, DateTimeKind.Local).AddTicks(270), "cruzroja", "B22698B8-42A2-4115-9631-1C2D1E2AC5F7", 3f });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
