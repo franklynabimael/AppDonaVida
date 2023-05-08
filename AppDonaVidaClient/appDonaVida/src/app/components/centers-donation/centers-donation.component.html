@@ -1,1 +1,26 @@
-<p>centers-donation works!</p>
+<div class="container">
+  <h1>Centro de Donaciones</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Direccion</th>
+        <th>Provincia</th>
+        <th>telefono</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let center of centerDonationsList">
+        <td>{{ center.name }}</td>
+        <td>{{ center.addres }}</td>
+        <td>{{ center.province }}</td>
+        <td>{{ center.phone }}</td>
+        <td>
+          <button class="btn btn-primary">Editar</button>
+          <button class="btn btn-danger">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

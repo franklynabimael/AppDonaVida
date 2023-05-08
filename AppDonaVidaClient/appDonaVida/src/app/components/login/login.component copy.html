@@ -1,0 +1,79 @@
+<body>
+  <div class="LoginFormContainer">
+    <div class="LoginFormContainerLevel2">
+      <div class="LoginFormContainerLevel3">
+        <form
+          [formGroup]="loginForm"
+          novalidate
+          autocomplete="off"
+          class="formGroupItem"
+        >
+          <div class="form-control">
+            <label>Nombre de Usuario* </label>
+            <input
+              matInput
+              type="userName"
+              formControlName="userName"
+              placeholder="Nombre de Usuario"
+              required
+              class="form-control1"
+            />
+            <mat-error>
+              <h5
+                *ngIf="
+                  validateControl('userName') &&
+                  hasError('userName', 'required')
+                "
+              >
+                Requerido<strong> Requerido</strong>
+              </h5>
+            </mat-error>
+          </div>
+
+          <div class="form-control">
+            <label>Contraseña*</label>
+            <input
+              matInput
+              type="password"
+              placeholder="Contraseña"
+              formControlName="password"
+              class="form-control1"
+              required
+              minlength="6"
+              maxlength="50"
+            />
+            <mat-error>
+              <h5
+                *ngIf="
+                  validateControl('password') &&
+                  hasError('password', 'required')
+                "
+              >
+                <strong> requerido</strong>
+              </h5>
+              <h5
+                *ngIf="
+                  validateControl('password') &&
+                  hasError('password', 'minlength')
+                "
+              >
+                Contraseñais es corta
+              </h5>
+            </mat-error>
+          </div>
+
+          <div class="LogingButton">
+            <button
+              mat-raised-button
+              type="submit"
+              class="btnLogin"
+              (click)="loginUser(loginForm.value)"
+            >
+              Iniciar Sesion
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

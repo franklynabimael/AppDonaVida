@@ -8,7 +8,7 @@ import { CenterDonorResponse } from '../interfaces/responses/centerDonorResponse
   providedIn: 'root',
 })
 export class CenterDonorService {
-  private urlApi = `https://localhost:7082/api/`;
+  private urlApi = `https://localhost:7082/api`;
   constructor(private http: HttpClient) {}
 
   getCenterDonors(): Observable<CenterDonorResponse> {

@@ -1,31 +1,14 @@
 <mat-toolbar class="toolbar">
   <span class="Dog">Tienda de perritos</span>
-  <div class="TopSideNav-Right" *ngIf="isUserAuthenticated">
-    <button
-      mat-raised-button
-      [matMenuTriggerFor]="menu"
-      class="ProfileButton"
-      color="Accent"
-    >
-      <span>Cuenta</span>
-      <mat-icon>expand_more</mat-icon>
-    </button>
-  </div>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="sweetAlert()">
-      <mat-icon>exit_to_app</mat-icon>
-      <span>Cerrar Sesion</span>
-    </button>
-  </mat-menu>
   <form class="form-inline my-2 my-lg-0">
     <ul *ngIf="isUserAdmin" class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li>
         <a
           class="nav-link"
-          [routerLink]="['/add-quote']"
+          [routerLink]="['/home/create-quote']"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
-          >Agregar Productos</a
+          >Agregar Cita</a
         >
       </li>
     </ul>
@@ -37,6 +20,15 @@
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
           >Iniciar Sesion</a
+        >
+      </li>
+    </ul>
+    <ul *ngIf="isUserAdmin" class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li>
+        <a
+          class="nav-link"
+          (click)="sweetAlert()"
+          >Logout</a
         >
       </li>
     </ul>

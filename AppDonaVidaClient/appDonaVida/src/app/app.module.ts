@@ -17,14 +17,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatTimepickerModule,
+} from '@angular-material-components/datetime-picker';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddDonationRecordComponent } from './components/add-donation-record/add-donation-record.component';
-import { AddQuoteComponent } from './components/add-quote/add-quote.component';
 import { BodySidebarComponent } from './components/body-sidebar/body-sidebar.component';
 import { CentersDonationComponent } from './components/centers-donation/centers-donation.component';
-import { DonationRecordDetailComponent } from './components/donation-record-detail/donation-record-detail.component';
+import { CreateQuoteComponent } from './components/create-quote/create-quote.component';
 import { DonationRecordsComponent } from './components/donation-records/donation-records.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import { HomeComponent } from './components/home/home.component';
@@ -46,15 +51,13 @@ export function tokenGetter() {
     LoginComponent,
     RegisterComponent,
     NavBarComponent,
-    AddQuoteComponent,
     QuotesComponent,
-    CentersDonationComponent, 
+    CentersDonationComponent,
     DonationRecordsComponent,
-    DonationRecordDetailComponent,
-    AddDonationRecordComponent,
     BodySidebarComponent,
     ForbiddenComponent,
     SideBarComponent,
+    CreateQuoteComponent,
   ],
   imports: [
     RouterModule,
@@ -75,6 +78,10 @@ export function tokenGetter() {
     MatSliderModule,
     MatDialogModule,
     HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

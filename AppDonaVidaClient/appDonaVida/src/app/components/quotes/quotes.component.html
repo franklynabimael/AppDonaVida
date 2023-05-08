@@ -1,1 +1,38 @@
-<p>quotes works!</p>
+<div class="container">
+  <h1>Citas Creadas</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Centro De Donación</th>
+        <th>Aprobado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cita of citasList">
+        <td>{{ cita.date | date : "dd/MM/yyyy" }}</td>
+        <td>{{ cita.date | date : "hh:mm" }}</td>
+        <td>{{ cita.idCenter }}</td>
+
+        
+
+        <td *ngIf="cita.isAproved; else elseBlock">
+          <span class="material-icons"> check_box </span>
+        </td>
+        <ng-template #elseBlock>
+          <td>
+            <span class="material-icons"> check_box_outline_blank </span>
+          </td>
+        </ng-template>
+
+        <td>
+          <button class="btn btn-primary">Editar</button>
+          <button class="btn btn-danger">Eliminar</button>
+          <button class="btn btn-success" (click)="Aprove(cita.id)">Aprobar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

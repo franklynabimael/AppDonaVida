@@ -1,1 +1,21 @@
-<p>donation-records works!</p>
+<div class="container">
+  <h1>Registro De Donaciones</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Cantidad</th>
+        <th>Centro De Donación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let center of registerDonationList">
+        <td>{{ center.date | date : "dd/mm/yyyy" }}</td>
+        <td>{{ center.date | date : "hh:mm" }}</td>
+        <td>{{ center.quantity }}</td>
+        <td>{{ center.idCenterDonation }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

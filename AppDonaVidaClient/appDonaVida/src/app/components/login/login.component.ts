@@ -64,10 +64,11 @@ export class LoginComponent {
                 localStorage.setItem('token', res.token);
         console.log(res);
         this.userService.sendAuthStateChangeNotification(res.isAuthSuccessful);
-        this.router.navigate(['']);
+        this.router.navigate(['/home']);
       },
       error: (error: HttpErrorResponse) => {
         this.errorMessage = error.error;
+        console.log(error.error);
         this.router.navigate(['/login'], {
           queryParams: { returnUrl: this.router.url },
         });

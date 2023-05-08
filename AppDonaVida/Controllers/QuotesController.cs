@@ -26,7 +26,12 @@ public class QuotesController : ControllerBase
     [Authorize]
     public IActionResult GetQuotes()
     {
-        IEnumerable<Quote> quotes = _context.Quotes.ToList();
+        string? currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (currentUserId == null)
+        {
+            return StatusCode((int)HttpStatusCode.Unauthorized);
+        }
+        IEnumerable<Quote> quotes = _context.Quotes.Where(x => x.IdUser == currentUserId).ToList();
         IEnumerable<QuoteResponse> quotesResponse = quotes.Adapt<IEnumerable<QuoteResponse>>();
         return Ok(quotesResponse);
     }

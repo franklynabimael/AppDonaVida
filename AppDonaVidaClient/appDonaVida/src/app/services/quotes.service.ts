@@ -14,7 +14,7 @@ export class QuotesService {
     return this.http.get<QuoteResponse>(`${this.urlApi}`);
   }
 
-  getQuote(id: number): Observable<QuoteResponse> {
+  AcceptQuote(id: string): Observable<QuoteResponse> {
     return this.http.get<QuoteResponse>(`${this.urlApi}/${id}`);
   }
 
