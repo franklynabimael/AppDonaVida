@@ -1,17 +1,17 @@
 export const navbarData = [
   {
     routelink: 'quotes',
-    icon: 'fas fa-user-friends',
+    icon: 'fa-solid fa-calendar',
     label: 'Citas',
   },
   {
     routelink: 'center-donor',
-    icon: 'fas fa-user-friends',
+    icon: 'fa-solid fa-hospital',
     label: 'Centros de Donación',
   },
   {
     routelink: 'donation-records',
-    icon: 'fas fa-user-friends',
+    icon: 'fa-solid fa-receipt',
     label: 'Historial de Donaciones',
   },
 ];

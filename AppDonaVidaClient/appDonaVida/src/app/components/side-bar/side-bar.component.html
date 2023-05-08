@@ -4,9 +4,10 @@
 <div >
     <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
         <div class="logo-container">
-            <button class="logo" (click)="toggleCollapse()"><img src="./assets/ico1.png"
+            
+            <div class="logo-text" *ngIf="collapsed">Menú</div>
+            <button class="logo" (click)="toggleCollapse()"><img src="./assets/icons8-me-gusta-96.png"
                     ></button>
-            <div class="logo-text" *ngIf="collapsed">ADV</div>
             <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
                 <i class="fal fa-times close-icon"></i>
             </button>

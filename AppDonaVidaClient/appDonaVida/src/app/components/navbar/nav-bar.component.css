@@ -47,14 +47,14 @@ form {
 }
 
 .active {
-  background-color: rgba(255, 0, 0, 0.359);
+  background-color: #ff00008b;
 }
 .btn-success{
-  background-color: #ff0000b3;;
+  background-color: #ff00008b;;
   border-color: #ff0000b3;
 }
 .btn-salir{
-  background-color: #ff0000b3;;
+  background-color: #ff00008b;;
   border-color: #ff0000b3;
   margin-left: 0.3rem;
   color: white;
