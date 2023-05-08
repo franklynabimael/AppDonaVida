@@ -13,3 +13,22 @@ table {
 button {
   margin-left: 0.5rem;
 }
+body {
+  font-family: Arial, sans-serif;
+}
+
+.modal-dialog {
+  max-width: 800px;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  font-weight: bold;
+}
