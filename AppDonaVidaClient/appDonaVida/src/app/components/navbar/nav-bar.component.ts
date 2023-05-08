@@ -29,17 +29,18 @@ export class NavBarComponent {
 
   sweetAlert() {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'Do you want to log out?',
+      title: 'Estas seguro?',
+      text: '¿Quieres cerrar sesión?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Log out',
+      confirmButtonText: 'Si, cerrar sesión',
+    cancelButtonText: 'Cancelar'
     }).then((logut) => {
       if (logut.isConfirmed) {
         localStorage.clear();
-        this.userService.logout();
+                this.userService.logout();
         this.router.navigate(['/']);
       }
     });

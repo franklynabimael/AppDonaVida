@@ -47,5 +47,15 @@ form {
 }
 
 .active {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 0, 0, 0.359);
+}
+.btn-success{
+  background-color: #ff0000b3;;
+  border-color: #ff0000b3;
+}
+.btn-salir{
+  background-color: #ff0000b3;;
+  border-color: #ff0000b3;
+  margin-left: 0.3rem;
+  color: white;
 }

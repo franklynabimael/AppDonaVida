@@ -1,34 +1,35 @@
-<mat-toolbar class="navbar navbar-light" style="background-color: #ff00008b">
-  <!-- Navbar content -->
-
-  <span class="Dog"> App Dona Vida</span>
+<mat-toolbar class="toolbar">
+  <span class="Dog">Tienda de perritos</span>
   <form class="form-inline my-2 my-lg-0">
     <ul *ngIf="isUserAdmin" class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li>
         <a
-          class="btn btn-success"
+          class="nav-link"
           [routerLink]="['/home/create-quote']"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
-          >Crear Cita
-        </a>
+          >Agregar Cita</a
+        >
       </li>
     </ul>
     <ul *ngIf="!isUserAuthenticated" class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li>
+      <li class="nav-item">
         <a
-          class="btn btn-success"
+          class="nav-link"
           [routerLink]="['/login']"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
           >Iniciar Sesion</a
         >
       </li>
-      
     </ul>
     <ul *ngIf="isUserAdmin" class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li>
-        <a class="btn btn-salir" (click)="sweetAlert()">Salir</a>
+        <a
+          class="nav-link"
+          (click)="sweetAlert()"
+          >Logout</a
+        >
       </li>
     </ul>
   </form>

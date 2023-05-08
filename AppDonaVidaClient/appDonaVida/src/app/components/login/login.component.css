@@ -1,7 +1,10 @@
 #intro {
   background-image: url(/assets/Dona-Vida-sombra.png);
   height: 110vh;
-  background-size: cover;
+  background-position-x: 4rem;
+  background-position-y: 15rem;
+  background-size: 40.33%;
+  background-repeat: no-repeat;
 }
 
 /* Height for devices larger than 576px */
@@ -11,6 +14,8 @@
   }
 }
 
-.navbar .nav-link {
-  color: #fff !important;
+.btn-primary {
+  border-color: #b22222;
+
+  background-color: rgb(228, 17, 17);
 }
