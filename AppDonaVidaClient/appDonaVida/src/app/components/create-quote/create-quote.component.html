@@ -1,6 +1,7 @@
+
 <div class="container">
-  <form class="productForm" [formGroup]="quoteForm">
-    <div>
+  <form class="productForm form-control" [formGroup]="quoteForm">
+    <div class="d-flex justify-content-between">
       <h5 class="modal-title">Crear Cita</h5>
     </div>
     <br />
@@ -19,15 +20,20 @@
     </div>
     <br />
     <h5 class="input-title">Fecha:</h5>
-      <mat-form-field>
-      <input matInput type="datetime-local" placeholder="start date" formControlName ="date">
+    <mat-form-field>
+      <input
+        matInput
+        type="datetime-local"
+        placeholder="start date"
+        formControlName="date"
+      />
     </mat-form-field>
-    <br/>                                                  
-    <div class="buttons">
+    <br />
+    <div class="d-flex justify-content-end">
       <button
         mat-raised-button
         type="submit"
-        class="save-button"
+        class="save-button btn btn-primary"
         (click)="sweetAlert()"
       >
         Guardar Cita

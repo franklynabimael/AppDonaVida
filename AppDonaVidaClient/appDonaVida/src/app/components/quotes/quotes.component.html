@@ -16,8 +16,6 @@
         <td>{{ cita.date | date : "hh:mm" }}</td>
         <td>{{ cita.idCenter }}</td>
 
-        
-
         <td *ngIf="cita.isAproved; else elseBlock">
           <span class="material-icons"> check_box </span>
         </td>
@@ -30,7 +28,6 @@
         <td>
           <button class="btn btn-primary">Editar</button>
           <button class="btn btn-danger">Eliminar</button>
-          <button class="btn btn-success" (click)="Aprove(cita.id)">Aprobar</button>
         </td>
       </tr>
     </tbody>

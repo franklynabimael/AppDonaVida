@@ -17,7 +17,8 @@
               <tr>
                 <th>Fecha</th>
                 <th>Hora</th>
-                <th>Cantidad</th>
+                <th>Tipo De Sangre</th>
+                <th>Cantidad </th>
                 <th>Centro De Donación</th>
               </tr>
             </thead>
@@ -25,6 +26,7 @@
               <tr *ngFor="let center of registerDonationList">
                 <td>{{ center.date | date : "dd/mm/yyyy" }}</td>
                 <td>{{ center.date | date : "hh:mm" }}</td>
+                <td> O+</td>
                 <td>{{ center.quantity }}</td>
                 <td>{{ center.idCenterDonation }}</td>
               </tr>
@@ -35,5 +37,4 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+

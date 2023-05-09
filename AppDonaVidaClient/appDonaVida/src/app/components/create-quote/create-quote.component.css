@@ -1,0 +1,19 @@
+.modal-title {
+  margin-bottom: 1rem;
+}
+.input-title {
+  margin-bottom: 0.5rem;
+}
+.form-control {
+  width: 50%;
+}
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+.save-button {
+  margin-top: 1rem;
+}
+.container{
+    margin-top: 2rem;
+}
